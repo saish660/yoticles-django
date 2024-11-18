@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --orgnlColor: white;
+  --inverseColor: black;
+  --titleColor: black;
+  --tempColor: grey;
+  --textColor: hsla(0, 0%, 0%, .9);
+  --subColor1: hsl(0, 0%, 50%);
+  --linkColor: hsl(250, 90%, 46%);
+  --bgColorMain: hsla(241, 40%, 98%, 1);
+  --bgColor1: hsl(0, 0%, 99%);
+  --cardBgColor: white;
+  --lightShadow: hsla(241, 100%, 60%, 0.1)
+    /*rgba(0, 0, 0, .08)*/
+  ;
+  --darkShadow: rgba(0, 0, 0, .2);
+  --animating-color: hsla(241, 84%, 65%, 1);
+  --bgColorExternal: hsla(0, 0%, 95%, 1);
+  --primaryColor: hsla(250, 89%, 75%, 1)
+    /*#9987F8*/
+  ;
+  --secondaryColor: hsla(6, 100%, 91%, 1);
+  --accentColor: hsla(185, 100%, 80%, 1);
+  --primaryColorShadow: hsla(241, 84%, 65%, .15);
+
+  --primaryShade05: hsl(250, 89%, 99%);
+  --primaryShade1: hsl(250, 89%, 98%);
+  --primaryShade15: hsl(250, 89%, 97%);
+  --primaryShade2: hsl(250, 89%, 96%);
+  --primaryShade25: hsl(250, 89%, 94%);
+  --primaryShade3: hsl(250, 89%, 93%);
+  --primaryShade35: hsl(250, 89%, 92%);
+  --primaryShade4: hsl(250, 89%, 90%);
+  --primaryShade45: hsl(250, 89%, 85%);
+  --primaryShade5: hsl(250, 89%, 80%);
+  --primaryShade55: hsl(250, 89%, 75%);
+  --primaryShade6: hsl(250, 89%, 70%);
+  --primaryShade65: hsl(250, 89%, 65%);
+  --primaryShade7: hsl(250, 89%, 60%);
+  --primaryShade75: hsl(250, 89%, 55%);
+  --primaryShade8: hsl(250, 89%, 50%);
+  --primaryShade85: hsl(250, 89%, 45%);
+  --primaryShade9: hsl(250, 89%, 40%);
+  --primaryShade95: hsl(250, 89%, 35%);
+  
+  
+  --secondaryShade05: hsl(6, 89%, 99%);
+  --secondaryShade1: hsl(6, 89%, 98%);
+  --secondaryShade15: hsl(6, 89%, 97%);
+  --secondaryShade2: hsl(6, 89%, 96%);
+  --secondaryShade25: hsl(6, 89%, 94%);
+  --secondaryShade3: hsl(6, 89%, 93%);
+  --secondaryShade35: hsl(6, 89%, 92%);
+  --secondaryShade4: hsl(6, 89%, 90%);
+  --secondaryShade45: hsl(6, 89%, 85%);
+  --secondaryShade5: hsl(6, 89%, 80%);
+  --secondaryShade55: hsl(6, 89%, 75%);
+  --secondaryShade6: hsl(6, 89%, 70%);
+  --secondaryShade65: hsl(6, 89%, 65%);
+  --secondaryShade7: hsl(6, 89%, 60%);
+  --secondaryShade75: hsl(6, 89%, 55%);
+  --secondaryShade8: hsl(6, 89%, 50%);
+  --secondaryShade85: hsl(6, 89%, 45%);
+  --secondaryShade9: hsl(6, 89%, 40%);
+  --secondaryShade95: hsl(6, 89%, 35%);
+
+  
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  background: var(--primaryShade1);
+  font-family: 'Outfit', sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  padding-top: 60px;
+
+}
+
+img {
+  height: auto;
+}
+
+.cleanLink {
+  text-decoration: none;
+  cursor: default;
+  color: var(--tempColor);
+}
+
+.screenCover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  transition: all .3s ease-out;
+  display: none;
+
+}
+
+.topBar {
+  width: 100%;
+  height: 60px;
+  /*box-shadow: 0 5px 20px var(--lightShadow);*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 5;
+  transition: top .3s;
+  display: flex;
+  flex-grow: 120px;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+.menuIcon{
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  margin: 0 0 0 10px;
+}
+
+.siteLogo {
+  width: 25px;
+  margin: 0 0 0 25px
+  
+}
+
+.leftside {
+  overflow: auto;
+}
+
+#menuDiv {
+  display: inline-block;
+  position: fixed;
+  z-index: 9;
+  max-width: 300px;
+  width: 70%;
+  background-color: white;
+  height: 100%;
+  left: -450px;
+  top: 0;
+  transition: all .4s;
+
+}
+
+#menuDivHead {
+  display: block;
+  padding: 13px 22px;
+  margin: 0 0 15px 0;
+  width: 100%;
+  border-bottom: 2px solid silver;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primaryShade9);
+
+}
+
+.menuItems {
+  display: flex;
+  height: 55px;
+
+}
+
+.menuItems a {
+  width: 80%;
+  transition: all .1s;
+  padding: 17px 23px;
+  margin: 2px 10px;
+  border-radius: 40px;
+  font-weight: 500;
+
+}
+
+.menuItems a:hover {
+  border: 2px solid var(--primaryShade9);
+  padding: 15px 0 0 25px;
+
+}
+
+
+.activePageLink {
+  background: var(--primaryShade2);
+  color: var(--primaryShade9);
+
+}
+
+#switchThemeBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 15px;
+  background: var(--inverseColor);
+  color: var(--orgnlColor);
+  font-family: 'Outfit', sans-serif;
+
+}
+
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  float: right;
+  padding: 50px 30px;
+  color: black;
+  background: hsla(250, 89%, 78%, 1);
+}
+
+footer h4,
+h5 {
+  font-size: 19px;
+  display: inline-block;
+  margin: 50px 0 15px 0;
+  padding: 0 5px;
+  border-bottom: 2px solid;
+}
+
+.footerInfo {
+  width: 100%;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.footerLinks {
+  width: 300px;
+
+}
+
+.footerLinks a {
+  font-size: 17px;
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.footerBottom {
+  width: 100%;
+  height: 50px;
+  background-color: hsla(250, 89%, 78%, 1);
+  float: right;
+  padding: 15px;
+  text-align: center;
+  border-top: 2px solid hsla(250, 89%, 74%, 1);
+}
+
+.footerSocial {
+  width: 150px;
+}
+
+.footerSocial img {
+  width: 30px;
+  margin-right: 10px;
+
+}
+
+#consent_banner {
+  position: fixed;
+  z-index: 100;
+  width: calc(100vw - 20px);
+  max-width: 1000px;
+  bottom: -170px;
+  left: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 95%, 1);
+  color: black;
+  font-size: 17px;
+  box-shadow: 0 5px 15px 2px hsla(0, 0%, 0%, .5);
+  transition: all 1s;
+
+}
+
+#consent_banner button {
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 40px;
+  margin: 10px;
+  background-color: var(--primaryColor);
+  color: white;
+
+}
+
+.snackbar {
+  position: fixed;
+  top: 70px;
+  width: calc(100% - 40px);
+  max-width: 700px;
+  display: inline-block;
+  border-radius: 0 10px 10px 0;
+  background: black;
+  color: white;
+  z-index: 7;
+  box-shadow: 0 3px 10px 5px var(--darkShadow);
+  transition: .3s all ease-in;
+  left: -100%;
+  overflow-x: hidden;
+
+}
+
+.snackbar p {
+  padding: 15px 25px;
+}
+
+.snackbar div {
+  width: 100%;
+  height: 3px;
+  background: white;
+  transition: all 5s linear;
+}
+
+.bottom-navigation{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 65px;
+  background: whitesmoke;
+  box-shadow: 0 1px 10px 1px var(--darkShadow);
+  
+}
+
+
+.bottom-nav-icons{
+  width: 57px;
+  height: 47px;
+  padding: 12px 15px;
+}
+
+.bottom-navigation .active-page{
+  background: hsla(6, 100%, 91%, 1);
+  border-radius: 20px;
+}
+
+.ellipsis-div {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+
+
+}
+
+.shareDialog {
+  text-align: center;
+  position: fixed;
+  display: inline-block;
+  max-width: 600px;
+  bottom: -450px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  height: 400px;
+  border-radius: 30px 30px 0 0;
+  /* box-shadow: 0 -2px 20px var(--darkShadow); */
+  box-shadow: 0 1px 20px var(--darkShadow);
+  z-index: 8;
+  transition: all .5s;
+
+}
+
+.shareDialog a {
+  color: black;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.shareBtn {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 0 20px;
+  border-radius: 50%;
+
+}
+
+.shareDialog div {
+  display: flex;
+  height: 35%;
+  /* align-items: center; */
+  align-items: end;
+}
+
+.share-tools span {
+  max-width: 100px;
+
+}
+
+.share-tools .shareBtn {
+  background: var(--primaryShade05);
+  fill: var(--primaryShade7);
+  padding: 5px;
+}
+
+.social-share-icons {
+  overflow-x: scroll;
+  /* padding-bottom: 10px; */
+  -ms-overflow-style: none;
+  scrollbar-width: 20px;
+
+}
+
+.social-share-icons::-webkit-scrollbar {
+  background-color: #ebebeb;
+  border-radius: 15px;
+  height: 7px;
+
+}
+
+.social-share-icons::-webkit-scrollbar-thumb {
+  background: #c9c9c9;
+  border-radius: 15px;
+
+}
+
+.shareDialog section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 5px;
+  padding-top: 30px;
+  background: white;
+  border-radius: 23px;
+  height: 100%;
+}
+
+.shareDialog>nav {
+  height: 25%;
+  border-radius: 26px;
+  background: linear-gradient(45deg, var(--primaryShade7), var(--secondaryShade5));
+  padding: 3px;
+}
+
+.shareDialog section span {
+  text-align: left;
+  margin: 0 10px 3px 10px;
+  padding-bottom: 1.5px;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+
+}
+
+.shareDialog nav section span[data-sharedialogtitle] {
+  font-size: 1.1em;
+}
+
+.shareDialog nav section span[data-sharedialogurl] {
+  color: rgb(129, 129, 129);
+  font-size: .95em;
+}

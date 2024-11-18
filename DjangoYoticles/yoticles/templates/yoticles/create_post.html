@@ -1,0 +1,21 @@
+{% extends 'yoticles/layouts/base_layout.html' %}
+{% load static %}
+
+{% block head_imports %}
+    <link rel="stylesheet" href="{% static 'yoticles/css/create-post.css' %}" type="text/css">
+
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data" class="create-post-form">
+        <h2>Create Post</h2>
+        {% csrf_token %}
+        <p>Post title</p>
+        <input type="text" name="title" placeholder="Title" class="title-input">
+       <p>Post Thumbnail</p>
+        <input type="file" name="image" accept="image/">
+        <p>Html body</p>
+        <textarea name="body" class="body-input"></textarea>
+          <button type="submit">Post</button>
+      </form>
+{% endblock %}

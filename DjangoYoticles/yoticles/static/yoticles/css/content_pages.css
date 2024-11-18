@@ -1,0 +1,98 @@
+.cardDetails {
+  display: inline-block;
+  color: hsla(0, 0%, 50%, 1);
+  padding: 10.5px 0;
+  font-size: .78rem;
+
+}
+
+.contentDiv {
+  margin: 0;
+  width: 100%;
+  background-color: var(--primaryShade05);
+}
+
+
+.contentCards {
+  width: 100%;
+  overflow: hidden;
+  background: var(--cardBgColor);
+  padding: 30px 25px;
+  border-bottom: .1px solid #e6e6e6;
+  border: .1px solid #e6e6e6;
+
+}
+
+.contentCardImg {
+  aspect-ratio: 16/10;
+  width: 100%;
+  margin: 0 0;
+  border-radius: 20px;
+
+}
+
+.top-data-section {
+  display: flex;
+  align-items: center;
+}
+
+.top-data-section>div {
+  margin: 0 10px;
+}
+
+.post-date-time {
+  display: block;
+  color: hsla(0, 0%, 50%, 1);
+  font-size: 14px;
+}
+
+.creator-name {
+  font-weight: 500;
+
+}
+
+.creator_pfp {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+}
+
+.contentCardHead {
+  color: var(--titleColor);
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 26px;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  height: calc(100% - 100px);
+  /* padding: 20px 0; */
+  padding: 15px 0;
+
+}
+
+.card-metrics {
+  height: 35px;
+  /* padding: 12px 2px 0 5px; */
+  padding: 10px 5px 5px 5px;
+
+}
+
+.card-reads-likes {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  color: hsla(0, 0%, 50%, 1);
+}
+
+.cardIcons {
+  width: 22px;
+  margin: 0 0 0 25px;
+  fill: dimgrey;
+  transition: .5s all;
+  float: right;
+
+}
+
+.active-fav-btn {
+  fill: limegreen;
+}

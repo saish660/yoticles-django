@@ -1,0 +1,104 @@
+@media (min-width: 700px) {
+
+  body {
+    padding-top: 55px;
+  }
+
+  .topBar {
+    position: fixed;
+  }
+  
+  .bottom-navigation{
+    display: none;
+  }
+  
+  #mainMenuImg{
+    display: inline-block;
+  }
+
+  #menuDiv {
+    display: inline-block;
+    width: 100%;
+    max-width: 220px;
+    /* border-right: 0.1px solid #e6e6e6; */
+    padding-top: 20px;
+    position: static;
+  }
+
+  #mainMenuImg {
+    display: none;
+  }
+
+  .visiblePage {
+    width: calc(100% - 220px);
+    float: right;
+
+  }
+/*
+  .contentDiv {
+    width: 100%;
+
+  }
+*/
+  .leftside {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    max-width: 280px;
+    min-width: 100px;
+    position: fixed;
+
+  }
+
+  #menuDivHead {
+    display: none;
+  }
+  
+  .contentCards{
+    padding-bottom: 20px;
+  }
+
+  .contentCardImg {
+    float: right;
+    max-width: 30%;
+    border-radius: 12px;
+    margin-top: 10px;
+
+  }
+
+  .contentCardHead {
+    max-width: 70%;
+    display: inline-block;
+  }
+
+  .card-metrics {
+    width: 100%;
+    float: left;
+    padding-top: 15px;
+  }
+
+  .cardTags {
+    margin-top: 10px;
+  }
+
+  .scrolling_container {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+  }
+
+  .stories {
+    flex-basis: calc(33.33% - 10px);
+
+  }
+
+
+}
+
+@media (min-width: 1000px) {
+  .siteLogo {
+    margin-left: calc(((100vw - 1000px) / 2) + 15px);
+  }
+  
+}
+

@@ -1,0 +1,18 @@
+{% extends 'yoticles/layouts/base_layout.html' %}
+{% load static %}
+
+{% block head_imports %}
+    <link rel="stylesheet" href="{% static 'yoticles/css/about_us.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+     <img src="{% static 'yoticles/icons/siteLogo.webp' %}" alt="Yoticles Logo" class="logo_img">
+
+    <h3>All The Articles You Need For Your Web Dev Journey</h3>
+
+    <p class="description">Yoticles.ga was established just as an hobby and a pastime. Our site has articles on various topics grouped together under sections for better browsing experience on our site, stories to get you going in a few seconds on the topic, and much more to come. Stay tuned with us!
+   <br>
+    Thanks for visiting Yoticles, and we hope you will come back often to learn and stay up to date.<br><br>Feel free to join us on twitter:
+    </p>
+    <a href="https://twitter.com/intent/tweet?screen_name=yoticles&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-size="large" data-show-count="false">Tweet to @yoticles</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock %}

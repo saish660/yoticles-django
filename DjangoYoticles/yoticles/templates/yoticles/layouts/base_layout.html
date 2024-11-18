@@ -1,0 +1,370 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Blogging site for fun articles and users ;)">
+
+    <title>Yoticles - {% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'yoticles/css/style.css' %}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'yoticles/css/responsive.css' %}"
+      type="text/css"
+    />
+    {% block head_imports %} {% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'yoticles/icons/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'yoticles/icons/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'yoticles/icons/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'yoticles/icons/site.webmanifest' %}">
+  <link rel="mask-icon" href="{% static 'yoticles/icons/safari-pinned-tab.svg' %}" color="#9987f8">
+  <meta name="msapplication-TileColor" content="#9987f8">
+  <meta name="theme-color" content="#9987f8">
+
+  </head>
+  <body id="mainBody">
+    <div class="screenCover" id="screenCover-off"></div>
+    <div id="consent_banner">
+      <p>
+        We use cookies to personalize your experience. By continuing to visit
+        this website you agree to our use of cookies.
+      </p>
+      <button onclick="set_cookie_status()">Got It</button>
+      <a
+        href="https://yoticles.infinityfreeapp.com/privacy-policy"
+        target="_blank"
+        >Read Our Cookie Policy</a
+      >
+    </div>
+
+    <div class="shareDialog">
+      <nav>
+        <section>
+          <span data-shareDialogTitle class="ellipsis-div"
+            ><b>Title not found</b></span
+          >
+          <span data-shareDialogURL class="ellipsis-div">URL not found</span>
+        </section>
+      </nav>
+
+      <div class="share-tools">
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="-14 -13 50 50"
+            class="shareBtn copyLink"
+            onclick="copy(shareDialog_url.textContent)"
+          >
+            <title>content-copy</title>
+            <path
+              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+            />
+          </svg>
+          Copy Link
+        </span>
+
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="-13 -13 50 50"
+            class="shareBtn share-icon"
+          >
+            <title>share-variant-outline</title>
+            <path
+              d="M18 16.08C17.24 16.08 16.56 16.38 16.04 16.85L8.91 12.7C8.96 12.47 9 12.24 9 12S8.96 11.53 8.91 11.3L15.96 7.19C16.5 7.69 17.21 8 18 8C19.66 8 21 6.66 21 5S19.66 2 18 2 15 3.34 15 5C15 5.24 15.04 5.47 15.09 5.7L8.04 9.81C7.5 9.31 6.79 9 6 9C4.34 9 3 10.34 3 12S4.34 15 6 15C6.79 15 7.5 14.69 8.04 14.19L15.16 18.34C15.11 18.55 15.08 18.77 15.08 19C15.08 20.61 16.39 21.91 18 21.91S20.92 20.61 20.92 19C20.92 17.39 19.61 16.08 18 16.08M18 4C18.55 4 19 4.45 19 5S18.55 6 18 6 17 5.55 17 5 17.45 4 18 4M6 13C5.45 13 5 12.55 5 12S5.45 11 6 11 7 11.45 7 12 6.55 13 6 13M18 20C17.45 20 17 19.55 17 19S17.45 18 18 18 19 18.45 19 19 18.55 20 18 20Z"
+            />
+          </svg>
+          Share via...
+        </span>
+      </div>
+
+      <div class="social-share-icons">
+        <a href="#" class="facebook">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            data-name="Ebene 1"
+            viewBox="0 0 1024 1024"
+            id="facebook-logo-2019"
+            class="shareBtn"
+          >
+            <path
+              fill="#1877f2"
+              d="M1024,512C1024,229.23016,794.76978,0,512,0S0,229.23016,0,512c0,255.554,187.231,467.37012,432,505.77777V660H302V512H432V399.2C432,270.87982,508.43854,200,625.38922,200,681.40765,200,740,210,740,210V336H675.43713C611.83508,336,592,375.46667,592,415.95728V512H734L711.3,660H592v357.77777C836.769,979.37012,1024,767.554,1024,512Z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M711.3,660,734,512H592V415.95728C592,375.46667,611.83508,336,675.43713,336H740V210s-58.59235-10-114.61078-10C508.43854,200,432,270.87982,432,399.2V512H302V660H432v357.77777a517.39619,517.39619,0,0,0,160,0V660Z"
+            ></path>
+          </svg>
+          Facebook
+        </a>
+        <a href="#" class="twitter">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0,0,256,256"
+            class="shareBtn"
+          >
+            <g transform="translate(-25.6,-25.6) scale(1.2,1.2)">
+              <g
+                fill="#000000"
+                fill-rule="nonzero"
+                stroke="none"
+                stroke-width="1"
+                stroke-linecap="butt"
+                stroke-linejoin="miter"
+                stroke-miterlimit="10"
+                stroke-dasharray=""
+                stroke-dashoffset="0"
+                font-family="none"
+                font-weight="none"
+                font-size="none"
+                text-anchor="none"
+                style="mix-blend-mode: normal"
+              >
+                <g transform="scale(5.12,5.12)">
+                  <path
+                    d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+          X / Twitter
+        </a>
+        <a href="#" class="whatsapp">
+          <svg
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="-31.9 -31.9 519.53 519.53"
+            xml:space="preserve"
+            fill="#000000"
+            class="shareBtn"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0">
+              <rect
+                x="-31.9"
+                y="-31.9"
+                width="519.53"
+                height="519.53"
+                rx="0"
+                fill="#1bd741"
+                strokewidth="0"
+              ></rect>
+            </g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <rect
+                  x="0"
+                  y="0"
+                  style="fill: #1bd741"
+                  width="455.731"
+                  height="455.731"
+                ></rect>
+                <g>
+                  <path
+                    style="fill: #ffffff"
+                    d="M68.494,387.41l22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 c0-87.765,71.402-159.167,159.167-159.167s159.166,71.402,159.166,159.167c0,87.765-71.401,159.167-159.166,159.167 c-27.347,0-54.125-7-77.814-20.292L68.494,387.41z M154.437,337.406l4.872,2.975c20.654,12.609,44.432,19.274,68.762,19.274 c72.877,0,132.166-59.29,132.166-132.167S300.948,95.321,228.071,95.321S95.904,154.611,95.904,227.488 c0,25.393,7.217,50.052,20.869,71.311l3.281,5.109l-12.855,45.658L154.437,337.406z"
+                  ></path>
+                  <path
+                    style="fill: #ffffff"
+                    d="M183.359,153.407l-10.328-0.563c-3.244-0.177-6.426,0.907-8.878,3.037 c-5.007,4.348-13.013,12.754-15.472,23.708c-3.667,16.333,2,36.333,16.667,56.333c14.667,20,42,52,90.333,65.667 c15.575,4.404,27.827,1.435,37.28-4.612c7.487-4.789,12.648-12.476,14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98 l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477,1.591l-13.703,17.764c-1.035,1.342-2.807,1.874-4.407,1.312 c-9.384-3.298-40.818-16.463-58.066-49.687c-0.748-1.441-0.562-3.19,0.499-4.419l13.096-15.15 c1.338-1.547,1.676-3.722,0.872-5.602l-15.046-35.201C187.187,154.774,185.392,153.518,183.359,153.407z"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+          WhatsApp</a
+        >
+        <a href="#" class="reddit">
+          <svg
+            viewBox="0 0 256 256"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            preserveAspectRatio="xMidYMid"
+            fill="#000000"
+            class="shareBtn"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <circle fill="#FF4500" cx="128" cy="128" r="128"></circle>
+                <path
+                  d="M213.149867,129.220267 C213.149867,118.843733 204.758756,110.603378 194.532978,110.603378 C189.498311,110.603378 184.918756,112.585956 181.562311,115.791644 C168.745244,106.635378 151.195022,100.6848 131.662222,99.9224889 L140.206933,59.9409778 L167.980089,65.8915556 C168.287289,72.9116444 174.084267,78.5578667 181.257956,78.5578667 C188.5824,78.5578667 194.532978,72.6072889 194.532978,65.28 C194.532978,57.9555556 188.5824,52.0049778 181.257956,52.0049778 C176.069689,52.0049778 171.490133,55.0570667 169.353956,59.4830222 L138.377956,52.9208889 C137.462044,52.7672889 136.546133,52.9208889 135.934578,53.3788444 C135.172267,53.8368 134.714311,54.5991111 134.563556,55.5150222 L125.100089,100.073244 C105.262933,100.6848 87.4083556,106.635378 74.4376889,115.945244 C71.0812444,112.739556 66.5016889,110.756978 61.4670222,110.756978 C51.0904889,110.756978 42.8501333,119.148089 42.8501333,129.373867 C42.8501333,137.002667 47.4268444,143.4112 53.8382222,146.312533 C53.5310222,148.141511 53.3802667,149.973333 53.3802667,151.958756 C53.3802667,180.644978 86.7996444,203.995022 128.001422,203.995022 C169.2032,203.995022 202.622578,180.798578 202.622578,151.958756 C202.622578,150.126933 202.468978,148.141511 202.164622,146.312533 C208.573156,143.4112 213.149867,136.849067 213.149867,129.220267 Z M85.2721778,142.495289 C85.2721778,135.170844 91.2227556,129.220267 98.5500444,129.220267 C105.874489,129.220267 111.825067,135.170844 111.825067,142.495289 C111.825067,149.819733 105.874489,155.773156 98.5500444,155.773156 C91.2227556,155.923911 85.2721778,149.819733 85.2721778,142.495289 Z M159.588978,177.746489 C150.432711,186.902756 133.036089,187.514311 128.001422,187.514311 C122.813156,187.514311 105.416533,186.749156 96.4110222,177.746489 C95.04,176.372622 95.04,174.236444 96.4110222,172.862578 C97.7848889,171.491556 99.9210667,171.491556 101.294933,172.862578 C107.094756,178.6624 119.303111,180.644978 128.001422,180.644978 C136.699733,180.644978 149.058844,178.6624 154.705067,172.862578 C156.078933,171.491556 158.215111,171.491556 159.588978,172.862578 C160.809244,174.236444 160.809244,176.372622 159.588978,177.746489 Z M157.1456,155.923911 C149.821156,155.923911 143.870578,149.973333 143.870578,142.648889 C143.870578,135.324444 149.821156,129.373867 157.1456,129.373867 C164.472889,129.373867 170.423467,135.324444 170.423467,142.648889 C170.423467,149.819733 164.472889,155.923911 157.1456,155.923911 Z"
+                  fill="#FFFFFF"
+                  fill-rule="nonzero"
+                ></path>
+              </g>
+            </g></svg
+          >Reddit
+        </a>
+        <a href="#" class="linkedin">
+          <svg
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+            class="shareBtn"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle cx="512" cy="512" r="512" style="fill: #0a66c2"></circle>
+              <path
+                d="M693.1 693.2h-76v-119c0-28.4-.6-64.9-39.6-64.9-39.6 0-45.7 30.9-45.7 62.8v121.1h-76V448.4h73v33.4h1c10.2-19.2 35-39.5 72-39.5 77 0 91.2 50.7 91.2 116.6l.1 134.3zm-323-278.3c-24.5 0-44.1-19.8-44.1-44.1s19.7-44.1 44.1-44.1c24.4 0 44.1 19.8 44.1 44.1s-19.8 44.1-44.1 44.1zm38.1 278.3H332V448.4h76.2v244.8zM731.1 256H293.9c-20.9 0-37.9 16.5-37.9 37v439c0 20.4 16.9 37 37.9 37H731c20.9 0 38-16.5 38-37V293c0-20.5-17.1-37-37.9-37z"
+                style="fill: #fff"
+              ></path>
+            </g>
+          </svg>
+          LinkedIn</a
+        >
+        <a href="#" class="telegram">
+          <svg
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="shareBtn"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle cx="16" cy="16" r="14" fill="#37BBFE"></circle>
+              <path
+                d="M22.9866 10.2088C23.1112 9.40332 22.3454 8.76755 21.6292 9.082L7.36482 15.3448C6.85123 15.5703 6.8888 16.3483 7.42147 16.5179L10.3631 17.4547C10.9246 17.6335 11.5325 17.541 12.0228 17.2023L18.655 12.6203C18.855 12.4821 19.073 12.7665 18.9021 12.9426L14.1281 17.8646C13.665 18.3421 13.7569 19.1512 14.314 19.5005L19.659 22.8523C20.2585 23.2282 21.0297 22.8506 21.1418 22.1261L22.9866 10.2088Z"
+                fill="white"
+              ></path>
+            </g>
+          </svg>
+          Telegram</a
+        >
+      </div>
+    </div>
+
+    <div class="snackbar">
+      <p>Error loading message</p>
+      <div></div>
+    </div>
+
+    <div class="topBar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="55"
+        width="45"
+        id="mainMenuImg"
+        class="menuIcon"
+        viewBox="0 0 50 48"
+        role="img"
+        aria-labelledby="acxbvl3nsdha4dqm5tam7yma8cnj001o"
+      >
+        <path d="M6 36V33H42V36ZM6 25.5V22.5H42V25.5ZM6 15V12H42V15Z" />
+      </svg>
+      <img src="{% static 'yoticles/icons/siteLogo.webp' %}" alt="Yoticles Logo" class="siteLogo" />
+    </div>
+    <div class="leftside">
+      <nav id="menuDiv">
+        <span id="menuDivHead"> Yoticles </span>
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'index' %}">Home</a>
+        </div>
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'profile' %}">Profile</a>
+        </div>
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'about_us' %}">About us</a>
+        </div>
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'follow' %}">Follow us</a>
+        </div>
+          {% if user.is_authenticated %}
+            <div class="menuItems">
+                <a href="{% url 'create_post' %}" class="cleanLink">Create Post</a>
+            </div>
+
+               <div class="menuItems">
+                <a href="{% url 'logout' %}" class="cleanLink">Logout</a>
+            </div>
+          {% else %}
+                <div class="menuItems">
+                <a href="{% url 'login' %}" class="cleanLink">Signup/Login</a>
+            </div>
+
+          {% endif %}
+        <div>
+          <button type="button" id="switchThemeBtn">Switch theme</button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="visiblePage">
+    <div class="contentDiv">
+
+      {% block body %}
+      {% endblock %}
+    </div>
+      <footer>
+        <div class="footerInfo">
+          <h4>Yoticles</h4>
+          <p>One place for all the articles you need for web dev</p>
+        </div>
+
+        <div class="footerLinks">
+          <h4>Explore</h4>
+          <a class="cleanLink" href="{% url 'index' %}">Home</a>
+          <a class="cleanLink" href="{% url 'profile' %}">Profile</a>
+          <a class="cleanLink" href="{% url 'about_us' %}">About Us</a>
+        </div>
+
+        <div class="footerLinks">
+          <h4>More</h4>
+          <a class="cleanLink" href="{% url 'follow' %}">Follow Us</a>
+          <a class="cleanLink" target="_blank" href="/sitemap-index.xml"
+            >Sitemap</a
+          >
+          <a class="cleanLink" target="_blank" href="/privacy-policy.html"
+            >Privacy Policy</a
+          >
+        </div>
+      </footer>
+      <div class="footerBottom">© yoticles.infinityfreeapp.com (2024-28)</div>
+    </div>
+
+    <script
+      src="{% static 'yoticles/js/main.js' %}"
+      type="text/javascript"
+      defer
+      charset="utf-8"
+    ></script>
+
+    {% block body_imports %} {% endblock %}
+  </body>
+</html>

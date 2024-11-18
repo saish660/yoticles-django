@@ -1,0 +1,30 @@
+{% extends 'yoticles/layouts/base_layout.html' %}
+{% load static %}
+
+{% block head_imports %}
+    <link rel="stylesheet" href="{% static 'yoticles/css/accounts.css' %}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+      <form method="post" action="{% url 'login' %}" class="accounts-form">
+            <h2>Login</h2>
+          {% csrf_token %}
+            <input type="text" name="login_username" placeholder="Username">
+            <input type="password" name="login_password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <h2>OR</h2>
+        <form method="post" action="{% url 'signup' %}" class="accounts-form">
+            <h2>Signup</h2>
+            {% csrf_token %}
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name">
+            <input type="email" name="email" placeholder="Email Address">
+            <input type="text" name="signup_username" placeholder="Create Username">
+            <input type="password" name="signup_password" placeholder="Create Password">
+
+
+            <button type="submit">Signup</button>
+          </form>
+{% endblock %}

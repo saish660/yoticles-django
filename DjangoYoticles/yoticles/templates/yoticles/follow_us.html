@@ -1,0 +1,20 @@
+{% extends 'yoticles/layouts/base_layout.html' %}
+{% load static %}
+
+{% block head_imports %}
+    <link rel="stylesheet" href="{% static 'yoticles/css/follow.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+     <div class="followCards contentCards">
+      <h3>X</h3>
+      <a href="https://twitter.com/yoticles?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @yoticles</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <p>Follow us on X to get latest news and updates of our site uploads.</p>
+      <button type="button" onclick="copy('https://twitter.com/yoticles?s=20&t=5FqhQHFQCtz3ItmCXqSaYg')">Copy Link</button>
+      <button type="button"><a href="https://twitter.com/yoticles?ref_src=twsrc%5Etfw">Visit Page</a></button>
+    </div>
+{% endblock %}
+
+{% block body_imports %}
+    <script src="{% static 'yoticles/js/copy_string.js' %}" type="text/javascript" defer ></script>
+{% endblock %}
