@@ -3,6 +3,24 @@ const page_url = encodeURI(window.location.href);
 const message = encodeURIComponent('Hey, Take a look at this article I found');
 const hashtags = ['yoticles'];
 
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const csrftoken = getCookie('csrftoken');
+
 //set up links of social share buttons with text and url
 function setupSocialShareBtns(title, url) {
 
@@ -114,7 +132,7 @@ card_share_btns.forEach(button => {
 
   const card = button.closest(".contentCards");
   const card_title = card.querySelector(".contentCardHead").innerHTML;
-  const card_url = "https://saish660.pythonanywhere.com" + card.querySelector("a").getAttribute("href");
+  const card_url = "https://saish660.pythonanywhere.com" + card.querySelector("#article-link").getAttribute("href");
 
   button.addEventListener('click', () => {
     setupShareBtns(card_title, card_url)
@@ -159,6 +177,7 @@ fav_btns.forEach(button => {
     alter_favorites(post_id);
     if (button.classList.contains("active-fav-btn")) {
       button.classList.remove("active-fav-btn");
+
     }
     else {
       button.classList.add("active-fav-btn");

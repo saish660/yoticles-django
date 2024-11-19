@@ -12,11 +12,11 @@
             <div class="top-data-section">
             <img src="{% static 'yoticles/icons/default_profile_pic.svg' %}" class="creator_pfp">
             <div>
-                <span class="creator-name">{{ post.author }}</span>
+                <span class="creator-name"><a href="{% url 'get_profile' post.author.username %}" class="cleanLink">{{ post.author }}</a></span>
                 <span class="post-date-time"> <time datetime="{{ post.pub_date|date:'c' }}" class="card-time-element">{{ post.pub_date }}</time>&nbsp; • &nbsp;{{ post.read_time }} min read</span>
             </div>
             </div>
-            <a class="cleanLink" href="{% url 'get_article' post.id %}">
+            <a class="cleanLink" id="article-link" href="{% url 'get_article' post.id %}">
             <h3 class="contentCardHead ellipsis-div">
                 {{ post.title }}</h3>
 
@@ -25,7 +25,7 @@
             <div class="card-metrics">
             <span class="card-reads-likes"><span class="card-read-count">{{ post.read_count }}</span>&nbsp;reads &nbsp;&nbsp;•&nbsp;&nbsp;<span class="card-like-count">{{ post.like_count }}</span>&nbsp;likes</span>
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 22 22" class="cardIcons add-to-fav-btn" data-post-id="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 22 22" class="cardIcons add-to-fav-btn" data-post-id="{{ post.id }}">
                 <title>bookmark-outline</title>
                 <path d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
             </svg>
@@ -38,7 +38,7 @@
         </div>
 
     {% empty  %}
-        <h1>Hmmmm, something's not right..</h1>
+        <h3 class="contentCardHead">No posts yet :(</h3>
     {% endfor %}
 
 

@@ -461,6 +461,8 @@ h5 {
   padding-bottom: 1.5px;
   -webkit-line-clamp: 1;
   line-clamp: 1;
+  width: 100%;
+
 
 }
 

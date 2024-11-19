@@ -23,20 +23,30 @@ def follow_us(request):
 
 
 def get_article(request, id):
+    article = Article.objects.get(id=id)
+    article.read_count += 1
+    article.save()
     return render(request, "yoticles/article.html", {
-        "post": Article.objects.get(id=id)
+        "post": article,
+        "recommended_posts": Article.objects.all()
     })
 
 
 def get_profile(request, username=None):
-    if username is not None and User.objects.filter(username=username).exists():
-        requested_user = User.objects.filter(username=username)
-    elif request.user.is_authenticated:
-        requested_user = request.user
+    if username is None:
+        if request.user.is_authenticated:
+            requested_user = request.user
+        else:
+            return HttpResponseRedirect(reverse('login'))
     else:
-        return HttpResponseRedirect(reverse('login'))
+        if User.objects.filter(username=username).exists():
+            requested_user = User.objects.get(username=username)
+        else:
+            return HttpResponse("User not found")
+
     return render(request, "yoticles/profile.html", {
-        "user": requested_user
+        "user": requested_user,
+        "posts_list": Article.objects.filter(author=requested_user)
     })
 
 

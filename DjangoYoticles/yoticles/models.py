@@ -19,12 +19,12 @@ class Article(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to=get_image_url, height_field=None, width_field=None, max_length=100, blank=True)
+    image = models.ImageField(upload_to=get_image_url, max_length=100, blank=True)
     body = models.TextField()
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add=True)
     read_time = models.IntegerField(default=5)
-    like_count = models.IntegerField(default=0)
     read_count = models.IntegerField(default=0)
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
 
     def __str__(self):
         return self.title

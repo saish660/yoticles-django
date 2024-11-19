@@ -95,4 +95,10 @@
 
 .active-fav-btn {
   fill: limegreen;
+
+
+}
+
+#article-link {
+  display: block;
 }
