@@ -27,7 +27,7 @@
         <img src="{{ post.image.url }}" class="artclThumbnail" alt="Article Thumbnail" width="90" height="90">
 
         <div class="article">
-            {{ post.body }}
+            {{ html_body|safe }}
 
         </div>
 

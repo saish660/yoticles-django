@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 import datetime
 from django.contrib.auth.decorators import login_required
+import markdown2
 
 
 # Create your views here.
@@ -26,8 +27,10 @@ def get_article(request, id):
     article = Article.objects.get(id=id)
     article.read_count += 1
     article.save()
+    article_html = markdown2.markdown(article.body)
     return render(request, "yoticles/article.html", {
         "post": article,
+        "html_body": article_html,
         "recommended_posts": Article.objects.all()
     })
 
