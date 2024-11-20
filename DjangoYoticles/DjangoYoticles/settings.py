@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-moy5nq^j2iit&6kdgd)1f9&t5plcfd_!0$j_jbc6zj@v4hcg5e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['saish660.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -121,10 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/saish660/yoticles-django/DjangoYoticles/static/'
+# STATIC_ROOT = '/home/saish660/yoticles-django/DjangoYoticles/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/saish660/media/'
+# MEDIA_ROOT = '/home/saish660/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
