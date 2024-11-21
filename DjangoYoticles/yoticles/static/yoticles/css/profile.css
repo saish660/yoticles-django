@@ -1,13 +1,10 @@
 .profile-details {
     width: max-content;
-    display: flex;
     margin: 50px auto;
-    background-color: rgb(232, 237, 255);
+    background-color: hsl(250, 100%, 97%);
     padding: 30px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     border-radius: 25px;
+    text-align: center;
 
 }
 

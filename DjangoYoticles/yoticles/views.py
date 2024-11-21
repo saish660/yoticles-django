@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import Article, User
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 import datetime
 from django.contrib.auth.decorators import login_required
 import markdown2
+import readtime
+import json
 
 
 # Create your views here.
@@ -60,12 +62,13 @@ def create_post(request):
         body = request.POST.get("body")
         author = request.user
         image = request.FILES.get("image")
-        pub_date = datetime.datetime.now()
-        new_article = Article(title=title, body=body, author=author, image=image, pub_date=pub_date)
+        read_time = readtime.of_markdown(body)
+        new_article = Article(title=title, body=body, author=author, image=image, read_time=read_time.minutes)
         new_article.save()
         return HttpResponseRedirect(reverse("profile"))
     else:
         return render(request, "yoticles/create_post.html")
+
 
 
 def signup(request):
@@ -106,3 +109,42 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse("signup"))
+
+
+@login_required
+def alter_bookmark(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        post_id = data.get("post_id")
+        article = Article.objects.get(id=post_id)
+        if article in request.user.bookmarked_posts.all():
+            request.user.bookmarked_posts.remove(article)
+            return JsonResponse(1, safe=False)
+        else:
+            request.user.bookmarked_posts.add(article)
+            return JsonResponse(2, safe=False)
+    else:
+        return HttpResponse(status=403)
+
+
+@login_required
+def alter_likes(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        post_id = data.get("post_id")
+        article = Article.objects.get(id=post_id)
+        if article in request.user.liked_posts.all():
+            request.user.liked_posts.remove(article)
+            return JsonResponse(1, safe=False)
+        else:
+            request.user.liked_posts.add(article)
+            return JsonResponse(2, safe=False)
+    else:
+        return HttpResponse(status=403)
+
+
+@login_required
+def bookmarks(request):
+    return render(request, "yoticles/bookmarks.html", {
+        "posts_list": request.user.bookmarked_posts.all
+    })

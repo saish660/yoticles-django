@@ -22,9 +22,10 @@ class Article(models.Model):
     image = models.ImageField(upload_to=get_image_url, max_length=100, blank=True)
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
-    read_time = models.IntegerField(default=5)
+    read_time = models.IntegerField()
     read_count = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+    bookmarks = models.ManyToManyField(User, related_name='bookmarked_posts', blank=True)
 
     def __str__(self):
         return self.title

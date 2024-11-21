@@ -65,6 +65,7 @@ article b {
   border-radius: 15px;
   display: block;
   width: 100%;
+  max-width: 750px;
   margin: 0 auto 50px auto;
   border: none;
 }
@@ -216,13 +217,14 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 150px;
+  width: 200px;
   height: 60px;
   margin: 0 auto;
+  padding: 0 10px;
   position: sticky;
   bottom: 20px;
   background: var(--primaryShade05);
-  box-shadow: 0 5px 10px 0px var(--lightShadow);
+  box-shadow: 0 5px 10px 0 var(--lightShadow);
   border-radius: 30px;
   border: 1px solid var(--darkShadow);
 }
@@ -230,5 +232,11 @@ code {
 .artcl-action-bar svg{
   width: 25px;
   display: block;
+  margin: 0 10px;
   
+}
+
+
+.active-like-btn {
+  fill: red;
 }

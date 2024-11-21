@@ -9,7 +9,6 @@
     font-size: 17px;
     border: none;
     border-radius: 20px;
-    background-color: rgba(223, 223, 223, 0.567);
     width: 100%;
 }
 
@@ -17,20 +16,31 @@
     height: 60vh;
     border: none;
     border-radius: 20px;
-    background-color: rgba(223, 223, 223, 0.567);
     width: 100%;
     padding: 10px;
     font-size: 17px;
 }
 
+textarea:focus, input:focus {
+    outline: none;
+}
+
 .create-post-form button {
     display: block;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 17px;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 18px;
     border: none;
-    background-color: aqua;
+    background-color: hsl(6, 89%, 90%);
     margin: 20px 5px;
+}
+
+input, textarea, button {
+    font-family: 'Outfit', sans-serif;
+}
+
+input, textarea {
+    background: #dfdfec;
 }
 
 .create-post-form p {

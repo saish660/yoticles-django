@@ -1,4 +1,6 @@
-
+.contentDiv {
+  padding: 50px;
+}
 h3{
     text-align: center;
     margin-bottom: 50px;
@@ -17,5 +19,5 @@ h3{
   .logo_img{
     width: 200px;
     display: block;
-    margin: 20px auto;
+    margin: 50px auto;
   }

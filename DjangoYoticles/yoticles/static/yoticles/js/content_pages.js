@@ -4,22 +4,7 @@ const message = encodeURIComponent('Hey, Take a look at this article I found');
 const hashtags = ['yoticles'];
 
 
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-const csrftoken = getCookie('csrftoken');
+const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 //set up links of social share buttons with text and url
 function setupSocialShareBtns(title, url) {
@@ -147,64 +132,68 @@ shareDialogBtnsList.forEach(button => {
 });
 
 
-//creates an array of the card_fav_btns and the artcl_btn
-var fav_btns = [
- ...document.querySelectorAll('.artcl-add-to-fav-btn'),
- ...document.querySelectorAll(".add-to-fav-btn")
+
+
+//creates an array of the card-bookmark-btn and the artcl-bookmark-btn
+let bookmark_buttons = [
+ ...document.querySelectorAll('.artcl-bookmark-btn'),
+ ...document.querySelectorAll(".bookmark-btn")
 ]
 
-//saves an empty list if no list was found in localstorage
-if (!(localStorage.getItem("user_fav_list")))
-{
-  localStorage.setItem('user_fav_list', JSON.stringify([]))
-}
+// //saves an empty list if no list was found in localstorage
+// if (!(localStorage.getItem("user_fav_list")))
+// {
+//   localStorage.setItem('user_fav_list', JSON.stringify([]))
+// }
 
 
 //Adds event listener with functon for add-to-favourite buttons on cards
-fav_btns.forEach(button => {
+bookmark_buttons.forEach(button => {
 
   const post_id = button.getAttribute("data-post-id");
-  var fav_list_string = localStorage.getItem("user_fav_list");
-  var fav_list_array = JSON.parse(fav_list_string);
-  
-  //sets the status of fav btns when loading
-  if (fav_list_array.includes(post_id))
-  {
-    button.classList.add("active-fav-btn");
-  }
 
   //for toggling the fav status
   button.addEventListener('click', () => {
-    alter_favorites(post_id);
-    if (button.classList.contains("active-fav-btn")) {
-      button.classList.remove("active-fav-btn");
-
-    }
-    else {
-      button.classList.add("active-fav-btn");
-    }
+    alter_bookmark(post_id, button);
   });
 
 })
 
 
-function alter_favorites(post_id) {
-  var fav_list_string = localStorage.getItem("user_fav_list");
-  var fav_list_array = JSON.parse(fav_list_string)
+function alter_bookmark(post_id, button) {
+  var action_performed = 0;
+  fetch("/alter_bookmark", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify({"post_id": post_id})
+  })
+      .then((response) => {
+             if (response.redirected) {
+            // User is not logged in; redirect them to the login page
+            window.location.href = response.url;
+        } else {
+            return response.json();
+        }
+      })
+      .then((data) => {
+          action_performed = data
 
-  if (!(fav_list_array.includes(post_id)))
+  if (action_performed === 1)
   {
-    fav_list_array.push(post_id);
+    show_snackbar("Post removed from favourites", 3000)
+    button.classList.remove("active-fav-btn");
+  }
+  else if (action_performed === 2) {
     show_snackbar("Post added to favourites", 3000);
-
+    button.classList.add("active-fav-btn");
   }
   else {
-    fav_list_array = fav_list_array.filter((id) => id !== post_id);
-    show_snackbar("Post removed from favourites", 3000)
+    show_snackbar("something went wrong "+action_performed, 3000)
   }
-
-  localStorage.setItem("user_fav_list", JSON.stringify(fav_list_array))
-
+  })
 
 }
 

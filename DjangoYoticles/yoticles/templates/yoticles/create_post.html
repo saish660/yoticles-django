@@ -1,6 +1,10 @@
 {% extends 'yoticles/layouts/base_layout.html' %}
 {% load static %}
 
+{% block title %}
+    Create Post
+{% endblock %}
+
 {% block head_imports %}
     <link rel="stylesheet" href="{% static 'yoticles/css/create-post.css' %}" type="text/css">
 
@@ -11,11 +15,11 @@
         <h2>Create Post</h2>
         {% csrf_token %}
         <p>Post title</p>
-        <input type="text" name="title" placeholder="Title" class="title-input">
+        <input type="text" name="title" placeholder="Title" class="title-input" required>
        <p>Post Thumbnail</p>
-        <input type="file" name="image" accept="image/">
+        <input type="file" name="image" accept="image/" required>
         <p>Markdown body</p>
-        <textarea name="body" class="body-input"></textarea>
+        <textarea name="body" class="body-input" required></textarea>
           <button type="submit">Post</button>
       </form>
 {% endblock %}

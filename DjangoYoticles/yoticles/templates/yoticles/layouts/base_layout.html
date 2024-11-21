@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Blogging site for fun articles and users ;)">
+      <meta name="csrf-token" content="{{ csrf_token }}">
 
     <title>Yoticles - {% block title %} {% endblock %}</title>
     <link
@@ -296,19 +297,13 @@
         <div class="menuItems">
           <a class="cleanLink" href="{% url 'index' %}">Home</a>
         </div>
-        <div class="menuItems">
-          <a class="cleanLink" href="{% url 'profile' %}">Profile</a>
-        </div>
-        <div class="menuItems">
-          <a class="cleanLink" href="{% url 'about_us' %}">About us</a>
-        </div>
-        <div class="menuItems">
-          <a class="cleanLink" href="{% url 'follow' %}">Follow us</a>
-        </div>
-          {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
             <div class="menuItems">
                 <a href="{% url 'create_post' %}" class="cleanLink">Create Post</a>
             </div>
+                      <div class="menuItems">
+          <a class="cleanLink" href="{% url 'profile' %}">Profile</a>
+        </div>
 
                <div class="menuItems">
                 <a href="{% url 'logout' %}" class="cleanLink">Logout</a>
@@ -319,6 +314,13 @@
             </div>
 
           {% endif %}
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'about_us' %}">About us</a>
+        </div>
+        <div class="menuItems">
+          <a class="cleanLink" href="{% url 'follow' %}">Follow us</a>
+        </div>
+
         <div>
           <button type="button" id="switchThemeBtn">Switch theme</button>
         </div>
