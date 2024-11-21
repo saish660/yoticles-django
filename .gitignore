@@ -163,4 +163,5 @@ cython_debug/
 
 
 # Custom
-DjangoYoticles/settings.py
+DjangoYoticles/DjangoYoticles/settings.py
+media
