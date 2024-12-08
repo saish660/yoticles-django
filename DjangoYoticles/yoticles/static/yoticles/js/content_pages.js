@@ -140,12 +140,6 @@ let bookmark_buttons = [
  ...document.querySelectorAll(".bookmark-btn")
 ]
 
-// //saves an empty list if no list was found in localstorage
-// if (!(localStorage.getItem("user_fav_list")))
-// {
-//   localStorage.setItem('user_fav_list', JSON.stringify([]))
-// }
-
 
 //Adds event listener with functon for add-to-favourite buttons on cards
 bookmark_buttons.forEach(button => {
@@ -161,6 +155,12 @@ bookmark_buttons.forEach(button => {
 
 
 function alter_bookmark(post_id, button) {
+
+  if(button.classList.contains('active-fav-btn'))
+    button.classList.remove('active-fav-btn')
+  else
+    button.classList.add('active-fav-btn')
+
   var action_performed = 0;
   fetch("/alter_bookmark", {
     method: 'POST',
@@ -184,14 +184,14 @@ function alter_bookmark(post_id, button) {
   if (action_performed === 1)
   {
     show_snackbar("Post removed from favourites", 3000)
-    button.classList.remove("active-fav-btn");
+    //button.classList.remove("active-fav-btn");
   }
   else if (action_performed === 2) {
     show_snackbar("Post added to favourites", 3000);
-    button.classList.add("active-fav-btn");
+    //button.classList.add("active-fav-btn");
   }
   else {
-    show_snackbar("something went wrong "+action_performed, 3000)
+    show_snackbar("something went wrong", 3000)
   }
   })
 

@@ -164,4 +164,5 @@ cython_debug/
 
 # Custom
 DjangoYoticles/DjangoYoticles/settings.py
+yoticles/migrations
 media

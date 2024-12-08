@@ -103,6 +103,9 @@
 {% endblock %}
 
 {% block body_imports %}
+    {% if request.user.is_authenticated %}
+        <script src="{% static 'yoticles/js/like.js' %}" type="text/javascript" defer></script>
+    {% endif %}
     <script src="{% static 'yoticles/js/content_pages.js' %}" type="text/javascript" defer></script>
     <script src="{% static 'yoticles/js/artclPage.js' %}" type="text/javascript" defer></script>
     <script src="{% static 'yoticles/js/copy_string.js' %}" type="text/javascript" defer></script>
