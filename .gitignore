@@ -166,3 +166,4 @@ cython_debug/
 DjangoYoticles/DjangoYoticles/settings.py
 yoticles/migrations
 media
+.idea
