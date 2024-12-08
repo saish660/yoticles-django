@@ -168,3 +168,4 @@ yoticles/migrations
 media
 .idea
 DjangoYoticles/yoticles/__pycache__
+DjangoYoticles/yoticles/migrations
