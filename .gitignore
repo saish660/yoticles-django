@@ -167,3 +167,4 @@ DjangoYoticles/DjangoYoticles/settings.py
 yoticles/migrations
 media
 .idea
+DjangoYoticles/yoticles/__pycache__
