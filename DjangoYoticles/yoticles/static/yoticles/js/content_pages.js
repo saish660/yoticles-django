@@ -184,11 +184,9 @@ function alter_bookmark(post_id, button) {
   if (action_performed === 1)
   {
     show_snackbar("Post removed from favourites", 3000)
-    //button.classList.remove("active-fav-btn");
   }
   else if (action_performed === 2) {
     show_snackbar("Post added to favourites", 3000);
-    //button.classList.add("active-fav-btn");
   }
   else {
     show_snackbar("something went wrong", 3000)
