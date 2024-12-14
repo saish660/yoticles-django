@@ -10,7 +10,7 @@ import readtime
 import json
 
 
-# Create your views here.
+
 def index(request):
     return render(request, "yoticles/index.html", {
         "posts_list": Article.objects.all()
