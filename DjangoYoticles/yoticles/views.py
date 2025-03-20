@@ -148,3 +148,7 @@ def bookmarks(request):
     return render(request, "yoticles/bookmarks.html", {
         "posts_list": request.user.bookmarked_posts.all
     })
+
+
+def privacy_policy(request):
+    return render(request, "yoticles/privacy-policy.html")
