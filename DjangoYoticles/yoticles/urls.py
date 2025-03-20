@@ -17,6 +17,5 @@ urlpatterns = [
     path("logout", views.logout_user, name="logout"),
     path("alter_bookmark", views.alter_bookmark, name="alter_bookmark"),
     path("alter_likes", views.alter_likes, name="alter_likes"),
-    path("bookmarks/", views.bookmarks, name="bookmarks"),
-    path("mouse/", views.mouse, name="mouse")
+    path("bookmarks/", views.bookmarks, name="bookmarks")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
